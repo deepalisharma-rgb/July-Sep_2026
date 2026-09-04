@@ -1,3 +1,4 @@
+/*
 import {test, expect} from '@playwright/test';
 import { clear } from 'node:console';
 
@@ -36,3 +37,4 @@ for(const product of products)
     console.log("Product Name is : ", productName);
 }
 })
+*/

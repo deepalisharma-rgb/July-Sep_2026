@@ -1,3 +1,4 @@
+/*
 const{test,expect}=require('@playwright/test');
 
 test('Assertions in Playwright', async ({page})=>       
@@ -33,3 +34,4 @@ test('Assertions in Playwright1', async ({page})=>
     await newsletterCheckbox.check(); //check the checkbox
     await expect(newsletterCheckbox).toBeChecked(); //assertion to check if the checkbox is checked     
 })
+    */

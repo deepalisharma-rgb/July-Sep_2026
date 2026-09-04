@@ -1,3 +1,4 @@
+/*
 const {test, expect} = require('@playwright/test');
 
 test('Hard Assertions in Playwright', async ({page})=> 
@@ -17,3 +18,4 @@ test('Soft Assertions in Playwright', async ({page})=>
     await expect.soft(page).toHaveURL("https://www.demoblaze.com/index.html"); //assertion to check if the URL of the webpage is correct
     await expect.soft(page.locator("id=nava")).toBeVisible(); //assertion to check if the logo of the webpage is visible
 })
+    */

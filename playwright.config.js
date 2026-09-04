@@ -44,7 +44,7 @@ const config=({
     screenshot: 'on',
     video: 'on',
     trace: 'on',
-    headless: true, // Set to false to see the browser UI
+    headless: false, // Set to false to see the browser UI
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 
   },
