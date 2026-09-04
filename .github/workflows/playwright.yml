@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: [ubuntu-latest, windows-latest, macos-latest] # Run tests on multiple OS
+    runs-on: windows-latest #[ubuntu-latest, windows-latest, macos-latest] # Run tests on multiple OS
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
