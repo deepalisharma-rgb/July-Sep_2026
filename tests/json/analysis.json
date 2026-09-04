@@ -1,0 +1,8 @@
+{
+  "longAnalysisDescription": "Example based on analyses in Bollaerts K...",
+  "analysisHeaderText": "Benefit-Risk Module",
+  "analysisValidationText": "*Minimum 2 characters required",
+  "addAnalysisMessageText": "BrAnalysis Added Successfully",
+  "updateAnalysisMessageText": "BrAnalysis Updated Successfully",
+  "deleteAnalysisMessageText": "BrAnalysis Deleted Successfully"
+}
