@@ -28,12 +28,12 @@ const config=({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 0, // Set to 2 to retry failed tests on CI and 0 to not retry on local
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
-    ['html', {open: 'always', outputFolder: `playwright-report/report-${timestamp}` }]
+    ['html', {open: 'always', outputFolder: `playwright-report/report-${timestamp}` }], ['github'], ['list'], ['junit', { outputFile: `playwright-report/report-${timestamp}/results.xml` }], ['json', { outputFile: `playwright-report/report-${timestamp}/results.json` }]
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   
@@ -44,7 +44,7 @@ const config=({
     screenshot: 'on',
     video: 'on',
     trace: 'on',
-    headless: false
+    headless: true, // Set to false to see the browser UI
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 
   },
