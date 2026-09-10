@@ -11,14 +11,12 @@ export class AnalysisPage extends BasePage {
     this.analysisNameField = "//input[@type='text']";
     this.analysisDescriptionField = "//textarea";
     this.saveButton = "//button[text()='Save']";
-
     this.toastMessage = "mat-snack-bar-container .mat-mdc-snack-bar-label";
-
     this.analysisTableRows = "tbody tr";
-
     this.deleteButton = "//button[text()='DELETE']";
-
     this.analysisHeader = "//h3[text()='Benefit-Risk Module']";
+    this.deleteIcon = "i.fa-solid.fa-trash";
+    this.editIcon = "i.fa-solid.fa-edit";
   }
 
   async navigate(url) {
@@ -64,7 +62,7 @@ export class AnalysisPage extends BasePage {
     const row = this.page.locator(this.analysisTableRows)
       .filter({ hasText: name });
 
-    await row.locator("i.fa-solid.fa-trash").click();
+    await row.locator(this.deleteIcon).click();
 
     await this.click(this.deleteButton);
   }
@@ -83,7 +81,7 @@ export class AnalysisPage extends BasePage {
       .filter({ hasText: oldName });
 
     // await row.locator(".fa-solid fa-edit").first().click();
-    await row.locator("i.fa-solid.fa-edit").click();
+    await row.locator(this.editIcon).click();
 
     await this.fill(this.analysisNameField, newName);
 
