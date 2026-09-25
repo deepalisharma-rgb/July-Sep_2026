@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 
-dotenv.config();
+if (!process.env.TEST_USERNAME) {
+  require('dotenv').config();
+}
 
 export const testConfig = {
   baseUrl: process.env.BASE_URL || 'https://br-module-test.speacsafety.net/',
