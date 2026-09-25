@@ -22,8 +22,8 @@ jobs:
     - name: Run Playwright tests
       # We bind GitHub secrets to the custom environment variables your code reads
       env:
-        USER_NAME: ${{ secrets.MY_USERNAME }}
-        USER_PASSWORD: ${{ secrets.MY_PASSWORD }}
+        TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
+        TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
       run: npx playwright test
     - uses: actions/upload-artifact@v4  # upload artifacts to GitHub 
       if: always()   #${{ !cancelled() }}
