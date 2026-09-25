@@ -20,6 +20,10 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
+      # We bind GitHub secrets to the custom environment variables your code reads
+      env:
+        USER_NAME: ${{ secrets.MY_USERNAME }}
+        USER_PASSWORD: ${{ secrets.MY_PASSWORD }}
       run: npx playwright test
     - uses: actions/upload-artifact@v4  # upload artifacts to GitHub 
       if: always()   #${{ !cancelled() }}
