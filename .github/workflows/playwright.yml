@@ -4,6 +4,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 jobs:
@@ -19,6 +20,14 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Verify test credentials are available
+      shell: pwsh
+      env:
+        TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
+        TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+      run: |
+        if ([string]::IsNullOrWhiteSpace($env:TEST_USERNAME)) { throw 'GitHub secret TEST_USERNAME is missing or unavailable to this workflow.' }
+        if ([string]::IsNullOrWhiteSpace($env:TEST_PASSWORD)) { throw 'GitHub secret TEST_PASSWORD is missing or unavailable to this workflow.' }
     - name: Run Playwright tests
       # We bind GitHub secrets to the custom environment variables your code reads
       env:
