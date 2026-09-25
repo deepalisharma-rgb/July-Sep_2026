@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import { testConfig } from './tests/config/testConfig.js';
 
 /**
  * Read environment variables from file.
@@ -17,7 +18,7 @@ const timestamp = new Date()
   .replace(/:/g, '-')
   .replace(/\..+/, '');
 
-const config=({
+const config = defineConfig({
   testDir: './tests',
   timeout: 80*1000,
   expect: {
@@ -38,6 +39,7 @@ const config=({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   
   use: {
+    baseURL: testConfig.baseUrl,
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
     // browserName : 'chromium',
@@ -96,4 +98,5 @@ const config=({
 
   
 });
-module.exports = config
+
+export default config;

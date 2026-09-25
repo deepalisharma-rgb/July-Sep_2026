@@ -1,0 +1,47 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - heading "Start your work with CloveHR." [level=1] [ref=e7]: Start your workwith CloveHR.
+    - paragraph [ref=e8]: We help businesses unlock their potential with creative digital solutions. From smart design to reliable tech, we're here to elevate your brand. Collaborate, innovate, and grow with a team that values vision and results. Let's create something great together
+    - generic [ref=e10]:
+      - paragraph [ref=e11]: CloveHR’s intuitive interface and real-time analytics simplify HR tasks like attendance, leave, and payroll, boosting efficiency and letting us focus on our core business. A valuable tool for growing companies!.
+      - generic [ref=e12]: — Surbhi Jain(Rasonix)
+      - generic [ref=e13]: ★★★★★
+  - generic [ref=e14]:
+    - generic [ref=e15]:
+      - heading "Login" [level=4] [ref=e16]
+      - heading "3/3" [level=4] [ref=e17]
+    - heading "Good to see you again login!" [level=2] [ref=e22]: Good to see you againlogin!
+    - generic [ref=e23]:
+      - generic [ref=e24]: Email
+      - textbox "Email" [ref=e25]
+    - generic [ref=e26]:
+      - generic [ref=e27]: Password
+      - generic [ref=e28]:
+        - textbox "Password" [ref=e29]
+        - button [ref=e30] [cursor=pointer]
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - checkbox [ref=e36] [cursor=pointer]
+        - generic [ref=e37]: Remember Me
+      - link "Forget Password?" [ref=e39] [cursor=pointer]:
+        - /url: /forgot-password
+    - button "Login" [disabled]
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]: Continue with
+        - img "Google Icon" [ref=e44]
+      - generic [ref=e45]:
+        - text: Don't Have an account?
+        - link "SignUp" [ref=e46] [cursor=pointer]:
+          - /url: /
+    - generic [ref=e47]:
+      - generic [ref=e48]: or
+      - button "Login with Magic Link" [disabled]
+    - generic [ref=e52]:
+      - heading "Download Tracker App" [level=2] [ref=e54]
+      - link [ref=e56] [cursor=pointer]:
+        - /url: https://d2kzihf00cfd8u.cloudfront.net/CloveHR-tracker.exe
+        - img "Windows Download" [ref=e57]
+      - link [ref=e59] [cursor=pointer]:
+        - /url: https://d2kzihf00cfd8u.cloudfront.net/CloveHR.dmg
+        - img "Mac Download" [ref=e60]

@@ -1,0 +1,11 @@
+{
+  "dataSource": "Clinical Trial Registry",
+  "assessment": "High relevance to primary endpoint analysis",
+  "rationaleAndLimitations": "Limited to phase III trial data only",
+  "editedDataSource": "Updated Clinical Trial Registry",
+  "editedAssessment": "Updated relevance assessment",
+  "editedRationaleAndLimitations": "Updated limitations note",
+  "addDataSourceMessageText": "Data source added successfully",
+  "updateDataSourceMessageText": "Data source updated successfully",
+  "deleteDataSourceMessageText": "Data source deleted successfully"
+}

@@ -1,28 +1,24 @@
 import { test, expect } from '@playwright/test';
 import { AnalysisPage } from './page/AnalysisPage.js';
-
+import { LoginPage } from './page/LoginPage.js';
+import { assertTestConfig, testConfig } from './config/testConfig.js';
 import analysisData from '../tests/json/analysis.json';
 
 test.describe('Analysis Module', () => {
 
   let analysisPage;
-
-  test.beforeEach(async ({ browser }) => {
-    const page = await browser.newPage();
+  
+  test.beforeEach(async ({ page }) => {
     page.setDefaultTimeout(120000);
     analysisPage = new AnalysisPage(page); 
+    const loginPage = new LoginPage(page);
 
-    await analysisPage.navigate('https://br-module-test.speacsafety.net/');
-
-    // login step
-    await page.getByPlaceholder('Email or Username').fill('deepali.sharma+admin@s2infinitum.com');
-   // await page.fill('#email', 'deepali.sharma+automation@s2infinitum.com');
-    await page.getByPlaceholder('Password').fill('Testing10!');
-    await page.click("button[type='submit']");
+    assertTestConfig();
+    await loginPage.login(testConfig.baseUrl, testConfig.username, testConfig.password);
   });
 
  test('Verify user able to add, edit and delete analysis', async () => {
-
+  test.describe.configure({ mode: 'serial' });
     const random = await AnalysisPage.randomNumber();
 
     const analysisName = `Analysis${random}`;
@@ -62,5 +58,11 @@ test.describe('Analysis Module', () => {
 
     await analysisPage.verifyAnalysisDeleted(updatedName);
   });
+
+test('Verify analysis headers and elements', async () => {
+  await analysisPage.verifyAnalysisHeaderText();
+  await analysisPage.verifySPEACLogo();   
+  await analysisPage.verifyIntroductionButton();
+});
 
 });

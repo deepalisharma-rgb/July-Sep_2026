@@ -17,6 +17,8 @@ export class AnalysisPage extends BasePage {
     this.analysisHeader = "//h3[text()='Benefit-Risk Module']";
     this.deleteIcon = "i.fa-solid.fa-trash";
     this.editIcon = "i.fa-solid.fa-edit";
+    this.introductionBtn = "//span[text()='Introduction']";
+    this.speacLogo = "//div//img[contains(@src,'SPEAC')]";
   }
 
   async navigate(url) {
@@ -38,12 +40,23 @@ export class AnalysisPage extends BasePage {
     await this.fill(this.analysisDescriptionField, description);
 
     await this.click(this.saveButton);
+
+    const createdAnalysis = this.page.locator(this.analysisTableRows)
+      .filter({ hasText: name });
+    await expect(createdAnalysis).toBeVisible();
   }
 
   // async verifyToastMessage(expectedText) {
   //   await expect(this.page.locator(this.toastMessage))
   //     .toHaveText(expectedText);
   // }
+
+  async clickOnAnalysis(name) {
+    const row = this.page.locator(this.analysisTableRows)
+      .filter({ hasText: name });
+    await expect(row).toBeVisible();
+    await row.getByText(name, { exact: true }).click();
+  }
 
   async verifyAnalysisPresent(name) {
     const row = this.page.locator(this.analysisTableRows)
@@ -91,5 +104,18 @@ export class AnalysisPage extends BasePage {
   async verifyHeader() {
     await expect(this.page.locator(this.analysisHeader))
       .toHaveText("Benefit-Risk Module");
+  }
+
+  async verifyIntroductionButton() {
+    await expect(this.page.locator(this.introductionBtn)).toBeVisible();
+  }
+
+  async verifyAnalysisHeaderText() {
+    await expect(this.page.locator(this.analysisHeader))
+      .toHaveText('Benefit-Risk Module');
+  }
+
+  async verifySPEACLogo() {
+    await expect(this.page.locator(this.speacLogo)).toBeVisible();
   }
 }
