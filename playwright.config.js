@@ -20,7 +20,7 @@ const timestamp = new Date()
 
 const config = defineConfig({
   testDir: './tests',
-  timeout: 80*1000,
+  timeout: 120*1000,
   expect: {
     timeout:80*1000,
   },

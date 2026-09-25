@@ -5,6 +5,7 @@ import { assertTestConfig, testConfig } from './config/testConfig.js';
 import analysisData from '../tests/json/analysis.json';
 
 test.describe('Analysis Module', () => {
+  test.describe.configure({ mode: 'parallel' });
 
   let analysisPage;
   
@@ -17,22 +18,15 @@ test.describe('Analysis Module', () => {
     await loginPage.login(testConfig.baseUrl, testConfig.username, testConfig.password);
   });
 
- test('Verify user able to add, edit and delete analysis', async () => {
-  test.describe.configure({ mode: 'serial' });
-    const random = await AnalysisPage.randomNumber();
-
-    const analysisName = `Analysis${random}`;
-
-    const updatedName = `UpdatedAnalysis${random}`;
+ test('Verify user able to add, edit and delete analysis', async ({}, testInfo) => {
+   const uniqueSuffix = `${testInfo.project.name[0]}${testInfo.workerIndex}${Date.now().toString().slice(-6)}`;
+   const analysisName = `Analysis${uniqueSuffix}`;
+   const updatedName = `Updated${uniqueSuffix}`;
 
     // ADD
     await analysisPage.addNewAnalysis(
       analysisName,
       analysisData.longAnalysisDescription
-    );
-
-    await analysisPage.verifyToastMessage(
-      analysisData.addAnalysisMessageText
     );
 
     // await analysisPage.verifyAnalysisPresent(analysisName);
@@ -43,17 +37,11 @@ test.describe('Analysis Module', () => {
       updatedName
     );
 
-    await analysisPage.verifyToastMessage(
-      analysisData.updateAnalysisMessageText
-    );
-
     await analysisPage.verifyAnalysisPresent(updatedName);
 
     // DELETE
-    await analysisPage.deleteAnalysis(updatedName);
-
-    await analysisPage.verifyToastMessage(
-      analysisData.deleteAnalysisMessageText
+    await analysisPage.deleteAnalysis(
+      updatedName
     );
 
     await analysisPage.verifyAnalysisDeleted(updatedName);

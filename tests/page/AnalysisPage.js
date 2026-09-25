@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { BasePage } from './BasePage.js';
-import { time } from 'node:console';
 
 export class AnalysisPage extends BasePage {
 
@@ -33,7 +32,10 @@ export class AnalysisPage extends BasePage {
 
   async addNewAnalysis(name, description) {
 
-    await this.click(this.addNewAnalysisBtn);
+    const addButton = this.page.locator(this.addNewAnalysisBtn);
+    await expect(addButton).toBeVisible();
+    await expect(addButton).toBeEnabled();
+    await addButton.click();
 
     await this.fill(this.analysisNameField, name);
 
@@ -78,6 +80,7 @@ export class AnalysisPage extends BasePage {
     await row.locator(this.deleteIcon).click();
 
     await this.click(this.deleteButton);
+
   }
 
   async verifyAnalysisDeleted(name) {
@@ -99,6 +102,7 @@ export class AnalysisPage extends BasePage {
     await this.fill(this.analysisNameField, newName);
 
     await this.click(this.saveButton);
+
   }
 
   async verifyHeader() {

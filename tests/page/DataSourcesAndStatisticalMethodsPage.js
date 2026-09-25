@@ -43,16 +43,20 @@ export class DataSourcesAndStatisticalMethodsPage extends BasePage {
     await this.clickOnSaveBtn();
   }
 
-  async editDataSource(dataSource, assessment, rationaleAndLimitations) {
-    await this.page.locator(this.editDataSourceBtn).click();
+  async editDataSource(existingDataSource, dataSource, assessment, rationaleAndLimitations) {
+    const row = this.page.locator(this.tableRow(existingDataSource));
+    await expect(row).toBeVisible();
+    await row.locator("i.fa-solid.fa-edit").click();
     await this.page.locator(this.dataSourceTextField).fill(dataSource);
     await this.page.locator(this.assessmentTextArea).fill(assessment);
     await this.page.locator(this.rationaleAndLimitationsTextArea).fill(rationaleAndLimitations);
     await this.clickOnSaveBtn();
   }
 
-  async deleteDataSource() {
-    await this.page.locator(this.deleteDataSourceBtn).click();
+  async deleteDataSource(dataSource) {
+    const row = this.page.locator(this.tableRow(dataSource));
+    await expect(row).toBeVisible();
+    await row.locator("i.fa-solid.fa-trash").click();
     await this.page.locator(this.confirmDeleteBtn).click();
   }
 
